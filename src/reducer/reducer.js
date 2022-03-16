@@ -2,8 +2,10 @@ const initialState = {
     allFoods: [],
     foodDetail: [],
     foodFilter: [],
-    foodSearched: []
+    foodSearched: [],
+    menuEdited: []
 }
+
 
 export default function rootReducer(state = initialState , action){
     switch(action.type) {
@@ -11,7 +13,8 @@ export default function rootReducer(state = initialState , action){
         case "GET_FOODS": 
             return {
                 ...state,
-                allFoods: action.payload
+                allFoods: action.payload,
+                menuEdited: action.payload
             };
 
         case "GET_FOODS_DETAIL":
@@ -25,6 +28,17 @@ export default function rootReducer(state = initialState , action){
                 ...state,
                 foodSearched: action.payload
             }
+
+        case "ADD_FOOD":
+            if(initialState.menuEdited.length < 4){
+            return{
+                ...state,
+                menuEdited: initialState.menuEdited.push(action.payload)
+            }
+        }
+        else{
+            console.log("Ha ocurrido un error")
+        }
             
         default: 
             return state;
