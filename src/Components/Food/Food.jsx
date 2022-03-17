@@ -14,7 +14,9 @@ export default function Food({id, title, image, vegan, vegetarian, glutenFree, h
     }
 
     return(
-        <div>
+        <div 
+        class="card"
+        style={{maxWidth:'50vh'}}>
             <div>
                 <Link to={`/detail/${id}`}>
                     <h3>{title}</h3>

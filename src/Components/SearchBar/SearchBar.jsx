@@ -33,20 +33,27 @@ export default function SearchBar() {
     return(
         <div>
             <div>
-                <div>
-                    <div>
-                        <input
-                        type="search" 
-                        onChange={handleInputChange}
-                        name='buscador'
+                <div class="d-flex container-fluid align-items-center" style={{background:'#EDEDED', height:'8vh'}}>
+                    <div class="container d-flex align-items-center justify-content-around">
+                        <div>
+                            <input
+                            class=" rounded-pill"
+                            style={{border:'2px solid #D4BC65',outline:'none'}}
+                            type="search" 
+                            onChange={handleInputChange}
+                            name='buscador'
 
-                        />
-                        <button onClick={searchFood}>Buscar</button>
-                    </div>
-                    <div>
-                        <button onClick={advancedFilter}>
-                            Busqueda Avanzada
-                        </button>
+                            />
+                            <button class="btn btn-light"
+                            onClick={searchFood}>
+                            Buscar
+                            </button>
+                        </div>
+                        <div>
+                            <a onClick={advancedFilter}>
+                                Busqueda Avanzada
+                            </a>
+                        </div>
                     </div>
                 </div>
                 {

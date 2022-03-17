@@ -19,8 +19,8 @@ export default function Menu(){
 
     return(
         <div>
-            <div>
-                <div>
+            <div class=" container border d-flex column align-items-center max-vh-50">
+                <div class="d-flex row">
                 {
                         notVegan && notVegan.map( (x) => (
                             <Food 
@@ -35,7 +35,7 @@ export default function Menu(){
                         ))
                 }
                 </div>
-                <div>
+                <div class="d-flex row">
                     {
                         vegan && vegan.map( x => (
                             <Food 
