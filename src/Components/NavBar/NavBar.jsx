@@ -8,7 +8,9 @@ export default function NavBar() {
     return (
         <div class='container-fluid d-flex justify-content-between align-items-center' style={{height:'6vh', background:'#D4BC65'}}>
             <div>
-                <GiKnifeFork /> FoodApp
+                <Link to='/'>
+                    <GiKnifeFork /> FoodApp
+                </Link>
             </div>
             <div>
                 <Link to='/login'>

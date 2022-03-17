@@ -16,8 +16,9 @@ export default function rootReducer(state = initialState , action){
                 allFoods: action.payload,
                 menuEdited: action.payload
             };
+        
 
-        case "GET_FOODS_DETAIL":
+        case "GET_FOOD_DETAILS":
             return{
                 ...state,
                 foodDetail: action.payload
@@ -27,7 +28,7 @@ export default function rootReducer(state = initialState , action){
             return{
                 ...state,
                 foodSearched: action.payload
-            }
+            };
 
         case "ADD_FOOD":
             if(initialState.menuEdited.length < 4){
@@ -38,7 +39,13 @@ export default function rootReducer(state = initialState , action){
         }
         else{
             console.log("Ha ocurrido un error")
-        }
+        };
+
+        case "CLEAR_ID":
+            return{
+                ...state,
+                foodDetail: []
+            };
             
         default: 
             return state;

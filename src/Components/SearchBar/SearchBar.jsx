@@ -5,12 +5,13 @@ import AdvancedSearch from '../AdvancedSearch/AdvancedSearch';
 
 export default function SearchBar() {
     const dispatch = useDispatch();
-    const [food , setFood] = useState("");
+    const [food , setFood] = useState('');
     const [filter , setFilter ] = useState(false);
     const [searcher, setSearcher] = useState(false);
 
     const handleInputChange = (e) => {
-        setFood({[e.target.name]: e.target.value})
+        
+        setFood(e.target.value)
     }
 
     const searchFood = (e) => {
@@ -18,10 +19,6 @@ export default function SearchBar() {
         dispatch(searchFoodName(food))
         setFood('')
     }
-
-
-  
-        
 
 
     const advancedFilter = () => {
@@ -42,7 +39,7 @@ export default function SearchBar() {
                             type="search" 
                             onChange={handleInputChange}
                             name='buscador'
-
+                            value={food}
                             />
                             <button class="btn btn-light"
                             onClick={searchFood}>

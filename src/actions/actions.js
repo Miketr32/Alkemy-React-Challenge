@@ -39,7 +39,7 @@ export function searchFoodName(name) {
             let foundedNames = await axios.get(`https://api.spoonacular.com/recipes/complexSearch?apiKey=${apiKey}&addRecipeInformation=true&fillIngredients=true&titleMatch=${name}`);
             dispatch({
                 type:"FOOD_SEARCHER",
-                payload: foundedNames.data
+                payload: foundedNames.data.results
             })
         } 
         catch (error) {
@@ -63,5 +63,11 @@ export function deleteFood(id) {
             type:"DELETE_FOOD",
             payload: id
         })
+    }
+};
+
+export function clearId() {
+    return {
+        type:"CLEAR_ID",
     }
 };
