@@ -7,21 +7,28 @@ import SearchMenues from "../SearchMenues/SearchMenues";
 
 
 export default function Menu(){
-    let menu = useSelector((state) => state.allFoods.flat());
+    //let menu = useSelector((state) => state.allFoods.flat());
     let menuEdited = useSelector((state) => state.menuEdited.flat());
     let foodSearched = useSelector((state) => state.foodSearched)
     let dispatch = useDispatch();
+    const [menu, setMenu] = useState(false);
 
     let vegan = menuEdited.filter(x => x.vegan === true);
-    let notVegan = menuEdited.filter(x => x.vegan === false)
+    let notVegan = menuEdited.filter(x => x.vegan === false);
+
+    const changeMenu = () => {
+        if(menu === false) return setMenu(true)
+        setMenu(false)
+    }
 
     useEffect(() => {
         dispatch(getFoods());
-    },[]);
+    },[menu]);
 
     return(
         <div>
-            { foodSearched.length !== 0 ? <SearchMenues /> : 
+            { foodSearched.length !== 0 ? <SearchMenues /> :
+            <div>
                 <div class=" container border d-flex column align-items-center max-vh-50">
                     <div class="d-flex row">
                     {
@@ -55,7 +62,11 @@ export default function Menu(){
                             ))
                         }
                     </div>
-                </div> 
+                </div>
+                <button
+                onClick={changeMenu}>Random</button>
+                <button>New Menu</button>
+            </div>
             }
         </div>
     )

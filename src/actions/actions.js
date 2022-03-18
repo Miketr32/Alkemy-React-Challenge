@@ -48,11 +48,11 @@ export function searchFoodName(name) {
     }
 };
 
-export function addFood(id) {
+export function addFood(payload) {
     return function (dispatch) {
             dispatch({
                 type:"ADD_FOOD",
-                payload: id
+                payload: payload
             })
     }
 };

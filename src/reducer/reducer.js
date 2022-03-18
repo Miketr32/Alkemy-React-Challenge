@@ -3,7 +3,9 @@ const initialState = {
     foodDetail: [],
     foodFilter: [],
     foodSearched: [],
-    menuEdited: []
+    menuEdited: [],
+    menuFull: false,
+    helper: []
 }
 
 
@@ -16,7 +18,6 @@ export default function rootReducer(state = initialState , action){
                 allFoods: action.payload,
                 menuEdited: action.payload
             };
-        
 
         case "GET_FOOD_DETAILS":
             return{
@@ -38,8 +39,18 @@ export default function rootReducer(state = initialState , action){
             }
         }
         else{
-            console.log("Ha ocurrido un error")
+            return{
+                ...state,
+                menuFull: true,
+                helper: initialState.helper.push(action.payload)
+            }
         };
+
+        case "DELETE_FOOD":
+            return{
+                ...state,
+                menuEdited: initialState.menuEdited.filter(x => x.id === action.payload)
+            };
 
         case "CLEAR_ID":
             return{
