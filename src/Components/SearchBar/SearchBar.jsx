@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from "react";
-import { searchFoodName } from "../../actions/actions";
+import { searchFoodName, clearSearch } from "../../actions/actions";
 import { useDispatch } from "react-redux";
 import AdvancedSearch from '../AdvancedSearch/AdvancedSearch';
 
@@ -10,16 +10,18 @@ export default function SearchBar() {
     const [searcher, setSearcher] = useState(false);
 
     const handleInputChange = (e) => {
-        
         setFood(e.target.value)
     }
 
     const searchFood = (e) => {
-        e.preventDefault();
-        dispatch(searchFoodName(food))
-        setFood('')
+        setSearcher(true);
     }
 
+    useEffect(() => {
+        dispatch(searchFoodName(food));
+        
+        setFood('')
+    },[searcher]);
 
     const advancedFilter = () => {
         if(!filter) return setFilter(true);

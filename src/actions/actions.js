@@ -71,3 +71,9 @@ export function clearId() {
         type:"CLEAR_ID",
     }
 };
+
+export function clearSearch(){
+    return{
+        type:"CLEAR_SEARCH",
+    }
+};
