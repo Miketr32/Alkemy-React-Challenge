@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from "react";
-import { getFoods, clearSearch } from "../../actions/actions";
+import { clearSearch, getFoods,  } from "../../actions/actions";
 import { useDispatch, useSelector } from "react-redux";
 import Food from "../Food/Food";
 import SearchMenues from "../SearchMenues/SearchMenues";
@@ -26,8 +26,11 @@ export default function Menu(){
         setSearch(false);
     }
 
+
+
     useEffect(() => {
         dispatch(getFoods());
+        dispatch(clearSearch())
     },[menu]);
 
     return(

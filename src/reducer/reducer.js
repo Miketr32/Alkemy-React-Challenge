@@ -61,7 +61,7 @@ export default function rootReducer(state = initialState , action){
         case "CLEAR_SEARCH":
             return{
                 ...state,
-                foodSearched:[]
+                foodSearched: []
             };
             
         default: 

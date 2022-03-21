@@ -14,12 +14,14 @@ export default function SearchBar() {
     }
 
     const searchFood = (e) => {
-        setSearcher(true);
+        e.preventDefault()
+        if(!searcher) return setSearcher(true);
+        setSearcher(false)
     }
 
     useEffect(() => {
         dispatch(searchFoodName(food));
-        
+        dispatch(clearSearch());
         setFood('')
     },[searcher]);
 

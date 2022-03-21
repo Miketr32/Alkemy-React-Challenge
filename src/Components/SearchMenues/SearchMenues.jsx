@@ -14,7 +14,6 @@ export default function SearchMenues({searcher}){
         let encontrado = foodAdded.find((y) => y.id === x.id)
         return encontrado == undefined
     });
-
     const addFoodie = (e) => {
         let add = founded.find(x => x.id === e.target.value);
         let filterVegan = foodAdded.filter(y => y.vegan === true);
@@ -32,9 +31,11 @@ export default function SearchMenues({searcher}){
         }
     }
 
-    useEffect(() => {
+    const open = () => {
         dispatch(clearSearch())
-    },[error])
+        searcher();
+        
+    }
 
     return(
         <div>
@@ -63,7 +64,7 @@ export default function SearchMenues({searcher}){
                     )) 
                 }
             </div>
-            <button onClick={() => searcher(false)}>X</button>
+            <button onClick={open}>X</button>
         </div>
     )
 }
