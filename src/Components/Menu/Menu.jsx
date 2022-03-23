@@ -26,7 +26,7 @@ export default function Menu(){
         setSearch(false);
     }
 
-
+    console.log(foodSearched)
 
     useEffect(() => {
         dispatch(getFoods());
@@ -35,7 +35,6 @@ export default function Menu(){
 
     return(
         <div>
-            { foodSearched.length !== 0 && search ? <SearchMenues searcher={searcher}/> :
             <div>
                 <div class=" container border d-flex column align-items-center max-vh-50">
                     <div class="d-flex row">
@@ -74,8 +73,7 @@ export default function Menu(){
                 <button
                 onClick={changeMenu}>Random</button>
                 <button>New Menu</button>
-            </div>
-            }
+            </div> 
         </div>
     )
 }

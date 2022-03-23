@@ -1,7 +1,7 @@
 import React, {useEffect} from "react";
 import { useParams, Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { searchFoodId, clearId } from "../../actions/actions";
+import { searchFoodId, clearId, clearSearch } from "../../actions/actions";
 import NavBar from '../NavBar/NavBar';
 import Loading from '../Loading/Loading'
 
@@ -14,6 +14,7 @@ export default function MenuDetail() {
     useEffect(() => {
         dispatch(searchFoodId(id));
         dispatch(clearId());
+        dispatch(clearSearch())
     }, []);
     
     if(foodDetail.length !== 0){
