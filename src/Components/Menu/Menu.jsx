@@ -8,7 +8,7 @@ import SearchMenues from "../SearchMenues/SearchMenues";
 
 export default function Menu(){
     //let menu = useSelector((state) => state.allFoods.flat());
-    let menuEdited = useSelector((state) => state.menuEdited.flat());
+    let menuEdited = useSelector((state) => state.menuEdited);
     let foodSearched = useSelector((state) => state.foodSearched)
     let dispatch = useDispatch();
     const [menu, setMenu] = useState(false);
@@ -26,7 +26,6 @@ export default function Menu(){
         setSearch(false);
     }
 
-    console.log(foodSearched)
 
     useEffect(() => {
         dispatch(getFoods());

@@ -47,9 +47,13 @@ export default function rootReducer(state = initialState , action){
         };
 
         case "DELETE_FOOD":
+            const foodDeleted = initialState.menuEdited.filter((x) => {
+                return x.id !== action.payload
+            });
+            console.log(initialState.menuEdited) // Reparar el getFoods en food
             return{
                 ...state,
-                menuEdited: initialState.menuEdited.filter(x => x.id === action.payload)
+                menuEdited: foodDeleted
             };
 
         case "CLEAR_ID":

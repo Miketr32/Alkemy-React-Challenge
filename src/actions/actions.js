@@ -7,9 +7,10 @@ export function getFoods(){
             let vegan = await axios.get(`https://api.spoonacular.com/recipes/random?apiKey=${apiKey}&tags=vegan&number=2`);
             let notVegan = await axios.get(`https://api.spoonacular.com/recipes/random?apiKey=${apiKey}&tags!==vegan&number=2`);
             let recipes = [vegan.data.recipes, notVegan.data.recipes]
+            let result = recipes.flat()
             dispatch({
                 type:"GET_FOODS",
-                payload: recipes
+                payload: result
             })
         }
         catch(error){

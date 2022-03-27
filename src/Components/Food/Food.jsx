@@ -1,17 +1,19 @@
-import React, {useState} from "react";
+import React, { useEffect, useState} from "react";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { deleteFood } from "../../actions/actions";
+import { deleteFood, getFoods } from "../../actions/actions";
 
 export default function Food({id, title, image, vegan, vegetarian, glutenFree, healthy}) {
     let editMenu = useSelector((state) => state.menuEdited.flat());
     const dispatch = useDispatch();
     const [addFood, setAddFood] = useState(true);
-
+    
     const modifyMenu = () => {
         setAddFood(false);
         dispatch(deleteFood(id));
     }
+
+
     if(addFood){
     return(
             <div 
