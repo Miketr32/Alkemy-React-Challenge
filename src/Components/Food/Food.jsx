@@ -13,6 +13,7 @@ export default function Food({id, title, image, vegan, vegetarian, glutenFree, h
         dispatch(deleteFood(id));
     }
 
+ 
 
     if(addFood){
     return(

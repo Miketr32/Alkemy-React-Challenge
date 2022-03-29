@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from "react";
-import { clearSearch, getFoods,  } from "../../actions/actions";
+import { clearSearch, getFoods, deleteFood  } from "../../actions/actions";
 import { useDispatch, useSelector } from "react-redux";
 import Food from "../Food/Food";
 import SearchMenues from "../SearchMenues/SearchMenues";
@@ -12,8 +12,8 @@ export default function Menu(){
     let foodSearched = useSelector((state) => state.foodSearched)
     let dispatch = useDispatch();
     const [menu, setMenu] = useState(false);
-    const [search, setSearch] = useState(true);
-    
+    const [deleteFood, setDeleteFood] = useState(false);
+
     let vegan = menuEdited.filter(x => x.vegan === true);
     let notVegan = menuEdited.filter(x => x.vegan === false);
 
@@ -22,14 +22,16 @@ export default function Menu(){
         setMenu(false)
     }
 
-    const searcher = () => {
-        setSearch(false);
+
+    const deleteFoodie = (e) => {
+        setDeleteFood(true);
+        dispatch(deleteFood(e))
     }
 
 
     useEffect(() => {
         dispatch(getFoods());
-        dispatch(clearSearch())
+        dispatch(clearSearch());
     },[menu]);
 
     return(

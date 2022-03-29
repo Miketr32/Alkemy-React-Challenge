@@ -50,7 +50,7 @@ export default function rootReducer(state = initialState , action){
             const foodDeleted = initialState.menuEdited.filter((x) => {
                 return x.id !== action.payload
             });
-            console.log(initialState.menuEdited) // Reparar el getFoods en food
+            console.log(foodDeleted) // Reparar el getFoods en food
             return{
                 ...state,
                 menuEdited: foodDeleted
